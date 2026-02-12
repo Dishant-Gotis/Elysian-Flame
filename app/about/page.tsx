@@ -8,7 +8,7 @@ export default function About() {
             <Navbar />
 
             {/* Hero */}
-            <section className="relative py-20 bg-gradient-to-b from-cream-50 to-white">
+            <section className="relative py-12 sm:py-16 md:py-20 bg-gradient-to-b from-cream-50 to-white">
                 <div className="absolute inset-0 opacity-10">
                     <div className="absolute inset-0" style={{
                         backgroundImage: 'radial-gradient(circle, #6CA651 1px, transparent 1px)',
@@ -16,12 +16,12 @@ export default function About() {
                     }}></div>
                 </div>
 
-                <div className="container mx-auto px-6 relative z-10">
+                <div className="container mx-auto px-4 sm:px-6 relative z-10">
                     <div className="max-w-3xl mx-auto text-center">
-                        <h1 className="text-5xl font-bold font-cormorant text-charcoal mb-6">
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold font-cormorant text-charcoal mb-4 sm:mb-6">
                             Our Story
                         </h1>
-                        <p className="text-xl text-gray-600 leading-relaxed">
+                        <p className="text-lg sm:text-xl text-gray-600 leading-relaxed px-4 sm:px-0">
                             Born from a passion for natural living and artisan craftsmanship, Elysian Flame brings you hand-poured candles that transform your space into a sanctuary.
                         </p>
                     </div>
@@ -29,11 +29,11 @@ export default function About() {
             </section>
 
             {/* Origin Story */}
-            <section className="py-20 bg-white">
-                <div className="container mx-auto px-6">
-                    <div className="grid md:grid-cols-2 gap-12 items-center">
+            <section className="py-12 sm:py-16 md:py-20 bg-white">
+                <div className="container mx-auto px-4 sm:px-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center">
                         <div>
-                            <h2 className="text-3xl font-bold font-cormorant text-charcoal mb-6">
+                            <h2 className="text-2xl sm:text-3xl font-bold font-cormorant text-charcoal mb-4 sm:mb-6">
                                 Hand-Crafted with Love
                             </h2>
                             <p className="text-gray-600 mb-4 leading-relaxed">
@@ -46,7 +46,7 @@ export default function About() {
                                 We believe in creating products that are as good for the planet as they are for your home. That's why we use eco-friendly materials and sustainable practices throughout our process.
                             </p>
                         </div>
-                        <div className="relative h-96 rounded-2xl overflow-hidden shadow-glass-lg">
+                        <div className="relative h-64 sm:h-80 md:h-96 rounded-2xl overflow-hidden shadow-glass-lg">
                             <img
                                 src="/images/Album/bowl.jpeg"
                                 alt="Candle Making Process"
@@ -58,18 +58,18 @@ export default function About() {
             </section>
 
             {/* Values */}
-            <section className="py-20 bg-cream-50">
-                <div className="container mx-auto px-6">
-                    <div className="text-center mb-12">
-                        <h2 className="text-4xl font-bold font-cormorant text-charcoal mb-4">
+            <section className="py-12 sm:py-16 md:py-20 bg-cream-50">
+                <div className="container mx-auto px-4 sm:px-6">
+                    <div className="text-center mb-8 sm:mb-12">
+                        <h2 className="text-3xl sm:text-4xl font-bold font-cormorant text-charcoal mb-4">
                             Our Values
                         </h2>
-                        <p className="text-gray-600 text-lg">
+                        <p className="text-gray-600 text-base sm:text-lg">
                             What guides us in everything we create
                         </p>
                     </div>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
                         <div className="p-6 rounded-2xl backdrop-blur-lg bg-white/60 border border-white/80 shadow-glass hover:shadow-glass-lg transition-all duration-300 hover:-translate-y-2 text-center">
                             <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-6">
                                 <Leaf className="w-8 h-8 text-primary" />
@@ -114,17 +114,17 @@ export default function About() {
             </section>
 
             {/* CTA */}
-            <section className="py-20 bg-white">
-                <div className="container mx-auto px-6">
+            <section className="py-12 sm:py-16 md:py-20 bg-white">
+                <div className="container mx-auto px-4 sm:px-6">
                     <div className="max-w-2xl mx-auto text-center">
-                        <h2 className="text-4xl font-bold font-cormorant text-charcoal mb-6">
+                        <h2 className="text-3xl sm:text-4xl font-bold font-cormorant text-charcoal mb-4 sm:mb-6">
                             Experience the Difference
                         </h2>
-                        <p className="text-gray-600 text-lg mb-8">
+                        <p className="text-gray-600 text-base sm:text-lg mb-6 sm:mb-8 px-4 sm:px-0">
                             Discover our collection of hand-poured botanical candles
                         </p>
                         <a href="/gallery">
-                            <button className="px-8 py-4 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90 shadow-glass-lg hover:scale-105 transition-all">
+                            <button className="px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base bg-primary text-white font-semibold rounded-lg hover:bg-primary/90 shadow-glass-lg hover:scale-105 transition-all">
                                 Browse Our Collection
                             </button>
                         </a>

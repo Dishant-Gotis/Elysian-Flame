@@ -48,13 +48,13 @@ export default function Contact() {
       <Navbar />
 
       {/* Hero */}
-      <section className="py-20 bg-gradient-to-b from-cream-50 to-white">
-        <div className="container mx-auto px-6">
+      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-cream-50 to-white">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="text-center max-w-2xl mx-auto">
-            <h1 className="text-5xl font-bold font-cormorant text-charcoal mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold font-cormorant text-charcoal mb-4 sm:mb-6">
               We're Here to Help
             </h1>
-            <p className="text-xl text-gray-600">
+            <p className="text-lg sm:text-xl text-gray-600 px-4 sm:px-0">
               Have questions? We'd love to hear from you.
             </p>
           </div>
@@ -62,8 +62,8 @@ export default function Contact() {
       </section>
 
       {/* Contact Form + Info */}
-      <section className="py-12 bg-white">
-        <div className="container mx-auto px-6">
+      <section className="py-8 sm:py-10 md:py-12 bg-white">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Contact Form */}
             <div className="lg:col-span-2">
@@ -206,10 +206,10 @@ export default function Contact() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-12 bg-cream-50">
-        <div className="container mx-auto px-6">
+      <section className="py-8 sm:py-10 md:py-12 bg-cream-50">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold font-cormorant text-charcoal mb-8 text-center">
+            <h2 className="text-2xl sm:text-3xl font-bold font-cormorant text-charcoal mb-6 sm:mb-8 text-center">
               Frequently Asked Questions
             </h2>
             

@@ -52,13 +52,13 @@ export default function Gallery() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-b from-cream-50 to-white">
-        <div className="container mx-auto px-6">
+      <section className="relative py-12 sm:py-16 md:py-20 bg-gradient-to-b from-cream-50 to-white">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="text-center max-w-2xl mx-auto">
-            <h1 className="text-5xl font-bold font-cormorant text-charcoal mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold font-cormorant text-charcoal mb-4 sm:mb-6">
               Gallery
             </h1>
-            <p className="text-xl text-gray-600">
+            <p className="text-lg sm:text-xl text-gray-600 px-4 sm:px-0">
               Explore our handcrafted collection of botanical candles
             </p>
           </div>
@@ -66,9 +66,9 @@ export default function Gallery() {
       </section>
 
       {/* Scroll Down Indicator */}
-      <div className="relative flex h-[30vh] items-center justify-center bg-white">
+      <div className="relative flex h-[20vh] sm:h-[30vh] items-center justify-center bg-white">
         <div className="text-center">
-          <p className="text-lg text-gray-500 mb-4">Scroll Down</p>
+          <p className="text-base sm:text-lg text-gray-500 mb-4">Scroll Down</p>
           <div className="animate-bounce">
             <svg className="w-6 h-6 mx-auto text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
@@ -81,18 +81,18 @@ export default function Gallery() {
       <ZoomParallax images={parallaxImages} />
 
       {/* Gallery Grid */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold font-cormorant text-charcoal mb-4">
+      <section className="py-12 sm:py-16 md:py-20 bg-white">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold font-cormorant text-charcoal mb-4">
               Our Collection
             </h2>
-            <p className="text-gray-600 text-lg">
+            <p className="text-gray-600 text-base sm:text-lg px-4 sm:px-0">
               Handcrafted with love and natural ingredients
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
             {galleryImages.map((image, index) => (
               <div
                 key={index}

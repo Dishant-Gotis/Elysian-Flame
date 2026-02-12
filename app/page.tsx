@@ -65,45 +65,45 @@ export default function Home() {
             </section>
 
             {/* Featured Collections */}
-            <section className="py-20 bg-white">
-                <div className="container mx-auto px-6">
-                    <div className="text-center mb-12">
-                        <h2 className="text-4xl font-bold font-cormorant text-charcoal mb-4">
+            <section className="py-12 sm:py-16 md:py-20 bg-white">
+                <div className="container mx-auto px-4 sm:px-6">
+                    <div className="text-center mb-8 sm:mb-12">
+                        <h2 className="text-3xl sm:text-4xl font-bold font-cormorant text-charcoal mb-4">
                             Featured Collections
                         </h2>
-                        <p className="text-gray-600 text-lg">
+                        <p className="text-gray-600 text-base sm:text-lg">
                             Explore our curated scent collections
                         </p>
                     </div>
 
-                    <div className="grid md:grid-cols-2 gap-8">
-                        <div className="relative h-96 rounded-2xl overflow-hidden group cursor-pointer shadow-glass hover:shadow-glass-lg transition-all">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+                        <div className="relative h-64 sm:h-80 md:h-96 rounded-2xl overflow-hidden group cursor-pointer shadow-glass hover:shadow-glass-lg transition-all">
                             <img
                                 src="/images/lavander.jpeg"
                                 alt="Floral Collection"
                                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-                            <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-                                <h3 className="text-3xl font-bold font-cormorant mb-2">Floral Collection</h3>
-                                <p className="text-white/80 mb-4">12 products</p>
-                                <button className="px-6 py-2 bg-white/20 backdrop-blur-md border border-white/40 rounded-full text-white hover:bg-white/30 transition-colors">
+                            <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-8 text-white">
+                                <h3 className="text-2xl sm:text-3xl font-bold font-cormorant mb-2">Floral Collection</h3>
+                                <p className="text-white/80 mb-3 sm:mb-4 text-sm sm:text-base">12 products</p>
+                                <button className="px-4 sm:px-6 py-2 text-sm sm:text-base bg-white/20 backdrop-blur-md border border-white/40 rounded-full text-white hover:bg-white/30 transition-colors">
                                     Shop Now
                                 </button>
                             </div>
                         </div>
 
-                        <div className="relative h-96 rounded-2xl overflow-hidden group cursor-pointer shadow-glass hover:shadow-glass-lg transition-all">
+                        <div className="relative h-64 sm:h-80 md:h-96 rounded-2xl overflow-hidden group cursor-pointer shadow-glass hover:shadow-glass-lg transition-all">
                             <img
                                 src="/images/orange.jpeg"
                                 alt="Citrus Collection"
                                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-                            <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-                                <h3 className="text-3xl font-bold font-cormorant mb-2">Citrus Collection</h3>
-                                <p className="text-white/80 mb-4">8 products</p>
-                                <button className="px-6 py-2 bg-white/20 backdrop-blur-md border border-white/40 rounded-full text-white hover:bg-white/30 transition-colors">
+                            <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-8 text-white">
+                                <h3 className="text-2xl sm:text-3xl font-bold font-cormorant mb-2">Citrus Collection</h3>
+                                <p className="text-white/80 mb-3 sm:mb-4 text-sm sm:text-base">8 products</p>
+                                <button className="px-4 sm:px-6 py-2 text-sm sm:text-base bg-white/20 backdrop-blur-md border border-white/40 rounded-full text-white hover:bg-white/30 transition-colors">
                                     Shop Now
                                 </button>
                             </div>
@@ -113,7 +113,7 @@ export default function Home() {
             </section>
 
             {/* Newsletter Section */}
-            <section className="relative py-20 bg-primary overflow-hidden">
+            <section className="relative py-12 sm:py-16 md:py-20 bg-primary overflow-hidden">
                 <div className="absolute inset-0 opacity-10">
                     <div className="absolute inset-0" style={{
                         backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
@@ -121,21 +121,21 @@ export default function Home() {
                     }}></div>
                 </div>
 
-                <div className="container mx-auto px-6 relative z-10">
+                <div className="container mx-auto px-4 sm:px-6 relative z-10">
                     <div className="max-w-2xl mx-auto text-center text-white">
-                        <h2 className="text-4xl font-bold font-cormorant mb-4">
+                        <h2 className="text-3xl sm:text-4xl font-bold font-cormorant mb-4">
                             Join Our Community
                         </h2>
-                        <p className="text-white/90 text-lg mb-8">
+                        <p className="text-white/90 text-base sm:text-lg mb-6 sm:mb-8 px-4 sm:px-0">
                             Subscribe to receive exclusive offers, candle care tips, and new collection launches
                         </p>
-                        <div className="flex gap-4 max-w-md mx-auto">
+                        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 max-w-md mx-auto px-4 sm:px-0">
                             <input
                                 type="email"
                                 placeholder="Enter your email"
-                                className="flex-1 px-6 py-3 rounded-lg bg-white/20 backdrop-blur-md border border-white/30 text-white placeholder-white/60 focus:outline-none focus:border-white"
+                                className="flex-1 px-4 sm:px-6 py-3 rounded-lg bg-white/20 backdrop-blur-md border border-white/30 text-white placeholder-white/60 focus:outline-none focus:border-white text-sm sm:text-base"
                             />
-                            <button className="px-8 py-3 bg-white text-primary font-semibold rounded-lg hover:bg-white/90 transition-colors">
+                            <button className="px-6 sm:px-8 py-3 bg-white text-primary font-semibold rounded-lg hover:bg-white/90 transition-colors whitespace-nowrap text-sm sm:text-base">
                                 Subscribe
                             </button>
                         </div>

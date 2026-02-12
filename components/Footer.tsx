@@ -27,7 +27,7 @@ export function Footer() {
               Hand-poured botanical luxury candles crafted with 100% natural soy wax and premium essential oils.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="p-2 bg-white/10 rounded-full hover:bg-primary/20 transition-colors">
+              <a href="https://www.instagram.com/_elysian_flame_/" target="_blank" rel="noopener noreferrer" className="p-2 bg-white/10 rounded-full hover:bg-primary/20 transition-colors">
                 <Instagram className="w-5 h-5" />
               </a>
               <a href="#" className="p-2 bg-white/10 rounded-full hover:bg-primary/20 transition-colors">

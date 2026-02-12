@@ -2,7 +2,7 @@
 
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
-import { Mail, Phone, Clock, ChevronDown } from 'lucide-react';
+import { Mail, Phone, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 
@@ -189,24 +189,17 @@ export default function Contact() {
                 </div>
               </div>
 
-              <div className="p-6 rounded-2xl backdrop-blur-lg bg-white/60 border border-white/80 shadow-glass">
-                <div className="flex items-start space-x-4">
-                  <div className="p-3 rounded-full bg-olive/10">
-                    <Clock className="w-6 h-6 text-olive" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-charcoal mb-1">Hours</h3>
-                    <p className="text-gray-600">Monday-Friday</p>
-                    <p className="text-gray-600">9:00 AM - 5:00 PM EST</p>
-                  </div>
-                </div>
-              </div>
-
               <div className="p-6 rounded-2xl bg-primary/5 border border-primary/20">
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-gray-600 mb-4">
                   <span className="font-semibold text-primary">Response Time:</span> We typically respond within 24 hours during business days.
                 </p>
               </div>
+
+              <a href="/gallery" className="block">
+                <Button size="lg" className="w-full shadow-glass-lg hover:scale-105 transition-transform">
+                  Order Now
+                </Button>
+              </a>
             </div>
           </div>
         </div>

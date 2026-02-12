@@ -19,6 +19,10 @@ const lora = Lora({
 export const metadata: Metadata = {
   title: "Elysian Flame - Hand-Poured Botanical Luxury Candles",
   description: "Discover our collection of 100% natural soy candles, infused with premium essential oils. Hand-poured with care for your home.",
+  icons: {
+    icon: '/images/logo.jpeg',
+    apple: '/images/logo.jpeg',
+  },
 };
 
 export default function RootLayout({

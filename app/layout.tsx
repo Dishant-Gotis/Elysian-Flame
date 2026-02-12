@@ -1,27 +1,24 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Raleway } from "next/font/google";
+import { Cormorant_Garamond, Lora } from "next/font/google";
 import "./globals.css";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-cormorant',
-  display: 'swap',
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-cormorant",
+  display: "swap",
 });
 
-const raleway = Raleway({
+const lora = Lora({
   subsets: ["latin"],
-  weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-raleway',
-  display: 'swap',
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-lora",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Elysian Flame | Handmade Soy Candles",
-  description: "Discover our collection of hand-poured, 100% natural soy candles infused with premium essential oils. Eco-friendly luxury for your home.",
-  keywords: ["soy candles", "handmade candles", "natural candles", "essential oil candles", "luxury candles"],
+  title: "Elysian Flame - Hand-Poured Botanical Luxury Candles",
+  description: "Discover our collection of 100% natural soy candles, infused with premium essential oils. Hand-poured with care for your home.",
 };
 
 export default function RootLayout({
@@ -30,16 +27,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${raleway.variable}`}>
-      <head>
-        <link rel="icon" href="/favicon.ico" />
-      </head>
-      <body className="font-sans antialiased">
-        <Navigation />
-        <main className="min-h-screen">
-          {children}
-        </main>
-        <Footer />
+    <html lang="en">
+      <body className={`${cormorant.variable} ${lora.variable} font-lora antialiased`}>
+        {children}
       </body>
     </html>
   );

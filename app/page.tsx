@@ -1,163 +1,149 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import ProductCard from '@/components/ProductCard';
+import { Navbar } from '@/components/Navbar';
+import { Footer } from '@/components/Footer';
+import { CandleHero } from '@/components/ui/hero-section';
 
-const featuredProducts = [
-    { id: '1', name: 'Lavender', tagline: 'Calming & Floral', image: '/products/lavander.jpeg' },
-    { id: '2', name: 'Rose', tagline: 'Romantic & Floral', image: '/products/rose.jpeg' },
-    { id: '3', name: 'Eucalyptus', tagline: 'Refreshing & Herbal', image: '/products/eucalyptus.jpeg' },
-    { id: '4', name: 'Ocean', tagline: 'Clean & Fresh', image: '/products/ocean.jpeg' },
-];
-
-export default function HomePage() {
+export default function Home() {
     return (
-        <>
-            {/* Hero Section */}
-            <section className="relative h-[700px] md:h-[600px] flex items-center justify-center">
-                <Image
-                    src="/products/banner-1.png"
-                    alt="Elysian Flame Candles"
-                    fill
-                    className="object-cover"
-                    priority
-                />
-                {/* Darker overlay for better text readability */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60" />
-                
-                <div className="relative z-10 text-center text-white px-6 max-w-4xl">
-                    {/* Compact tagline */}
-                    <p className="text-sm md:text-base uppercase tracking-widest mb-4 text-accent-lime font-semibold">
-                        100% Natural • Handcrafted • Botanical
-                    </p>
-                    
-                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold mb-6 leading-tight">
-                        Hand-Poured
-                        <br />
-                        <span className="text-accent-lime">Botanical Luxury</span>
-                    </h1>
-                    
-                    <p className="text-lg md:text-xl mb-10 text-gray-200 max-w-2xl mx-auto">
-                        Premium soy candles infused with essential oils
-                    </p>
-                    
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <Link href="/gallery" className="btn-primary text-lg px-10 py-4">
-                            View Collection
-                        </Link>
-                        <Link href="/contact" className="btn-secondary bg-white/20 backdrop-blur-sm border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-10 py-4">
-                            Get in Touch
-                        </Link>
-                    </div>
-                </div>
-            </section>
+        <main>
+            <Navbar />
 
-            {/* Value Propositions */}
-            <section className="section-padding bg-cream">
-                <div className="max-w-7xl mx-auto">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div className="text-center">
-                            <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            {/* Hero Section */}
+            <CandleHero
+                title={
+                    <>
+                        Hand-Poured Botanical <br />
+                        <span className="text-primary">Luxury</span>
+                    </>
+                }
+                description="Discover our collection of 100% natural soy candles, infused with premium essential oils. Each candle is hand-poured with care to bring warmth and tranquility to your home."
+                primaryButtonText="Shop Collections"
+                primaryButtonLink="/gallery"
+                secondaryButtonText="Explore Gift Sets"
+                secondaryButtonLink="/gallery"
+                candleImage1="/images/Album/rose.jpeg"
+                candleImage2="/images/Album/strawberry.jpeg"
+            />
+
+            {/* Value Propositions Section */}
+            <section className="py-12 sm:py-16 md:py-20 bg-cream-50">
+                <div className="container mx-auto px-4 sm:px-6">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+                        {/* Natural Soy */}
+                        <div className="p-6 sm:p-8 rounded-2xl backdrop-blur-lg bg-white/60 border border-white/80 shadow-glass hover:shadow-glass-lg transition-all duration-300 hover:-translate-y-2 group touch-manipulation">
+                            <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                                <svg className="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                                 </svg>
                             </div>
-                            <h3 className="text-xl font-serif font-bold mb-2">100% Natural Soy</h3>
+                            <h3 className="text-xl font-bold font-cormorant text-charcoal mb-3">100% Natural Soy</h3>
                             <p className="text-gray-600">Eco-friendly, clean-burning candles made from sustainable soy wax</p>
                         </div>
 
-                        <div className="text-center">
-                            <div className="w-16 h-16 bg-accent-lime rounded-full flex items-center justify-center mx-auto mb-4">
-                                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        {/* Artisan Crafted */}
+                        <div className="p-6 sm:p-8 rounded-2xl backdrop-blur-lg bg-white/60 border border-white/80 shadow-glass hover:shadow-glass-lg transition-all duration-300 hover:-translate-y-2 group">
+                            <div className="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                                <svg className="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
                                 </svg>
                             </div>
-                            <h3 className="text-xl font-serif font-bold mb-2">Artisan Crafted</h3>
+                            <h3 className="text-xl font-bold font-cormorant text-charcoal mb-3">Artisan Crafted</h3>
                             <p className="text-gray-600">Each candle is hand-poured with care in small batches for quality</p>
                         </div>
 
-                        <div className="text-center">
-                            <div className="w-16 h-16 bg-accent-olive rounded-full flex items-center justify-center mx-auto mb-4">
-                                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                        {/* Premium Fragrances */}
+                        <div className="p-6 sm:p-8 rounded-2xl backdrop-blur-lg bg-white/60 border border-white/80 shadow-glass hover:shadow-glass-lg transition-all duration-300 hover:-translate-y-2 group">
+                            <div className="w-16 h-16 rounded-full bg-olive/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                                <svg className="w-8 h-8 text-olive" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                                 </svg>
                             </div>
-                            <h3 className="text-xl font-serif font-bold mb-2">Premium Fragrances</h3>
+                            <h3 className="text-xl font-bold font-cormorant text-charcoal mb-3">Premium Fragrances</h3>
                             <p className="text-gray-600">Unique blends using pure essential oils and natural botanicals</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Featured Candles */}
-            <section className="section-padding">
-                <div className="max-w-7xl mx-auto">
+            {/* Featured Collections */}
+            <section className="py-20 bg-white">
+                <div className="container mx-auto px-6">
                     <div className="text-center mb-12">
-                        <h2 className="text-4xl font-serif font-bold text-primary mb-4">
-                            Featured Collection
+                        <h2 className="text-4xl font-bold font-cormorant text-charcoal mb-4">
+                            Featured Collections
                         </h2>
                         <p className="text-gray-600 text-lg">
-                            Discover our most beloved scents
+                            Explore our curated scent collections
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                        {featuredProducts.map((product) => (
-                            <ProductCard key={product.id} product={product} />
-                        ))}
-                    </div>
-
-                    <div className="text-center mt-12">
-                        <Link href="/gallery" className="btn-primary">
-                            View All Candles
-                        </Link>
-                    </div>
-                </div>
-            </section>
-
-            {/* About Snippet */}
-            <section className="section-padding bg-accent-sage/10">
-                <div className="max-w-7xl mx-auto">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                        <div className="relative h-96 rounded-card overflow-hidden">
-                            <Image
-                                src="/products/new-products.jpeg"
-                                alt="Handmade Candles"
-                                fill
-                                className="object-cover"
+                    <div className="grid md:grid-cols-2 gap-8">
+                        <div className="relative h-96 rounded-2xl overflow-hidden group cursor-pointer shadow-glass hover:shadow-glass-lg transition-all">
+                            <img
+                                src="/images/lavander.jpeg"
+                                alt="Floral Collection"
+                                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                             />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                            <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
+                                <h3 className="text-3xl font-bold font-cormorant mb-2">Floral Collection</h3>
+                                <p className="text-white/80 mb-4">12 products</p>
+                                <button className="px-6 py-2 bg-white/20 backdrop-blur-md border border-white/40 rounded-full text-white hover:bg-white/30 transition-colors">
+                                    Shop Now
+                                </button>
+                            </div>
                         </div>
-                        <div>
-                            <h2 className="text-4xl font-serif font-bold text-primary mb-6">
-                                Our Story
-                            </h2>
-                            <p className="text-gray-600 text-lg mb-4">
-                                At Elysian Flame, we believe in the power of natural, handcrafted products to transform your space into a sanctuary.
-                            </p>
-                            <p className="text-gray-600 text-lg mb-6">
-                                Each candle is carefully hand-poured using 100% soy wax and infused with premium essential oils, creating a clean-burning, aromatic experience that brings warmth and tranquility to your home.
-                            </p>
-                            <Link href="/about" className="btn-secondary">
-                                Learn More About Us
-                            </Link>
+
+                        <div className="relative h-96 rounded-2xl overflow-hidden group cursor-pointer shadow-glass hover:shadow-glass-lg transition-all">
+                            <img
+                                src="/images/orange.jpeg"
+                                alt="Citrus Collection"
+                                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                            <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
+                                <h3 className="text-3xl font-bold font-cormorant mb-2">Citrus Collection</h3>
+                                <p className="text-white/80 mb-4">8 products</p>
+                                <button className="px-6 py-2 bg-white/20 backdrop-blur-md border border-white/40 rounded-full text-white hover:bg-white/30 transition-colors">
+                                    Shop Now
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Contact CTA */}
-            <section className="section-padding bg-primary text-white">
-                <div className="max-w-3xl mx-auto text-center">
-                    <h2 className="text-4xl font-serif font-bold mb-6">
-                        Ready to Order?
-                    </h2>
-                    <p className="text-xl mb-8 text-cream">
-                        Get in touch to place your order or inquire about custom scents
-                    </p>
-                    <Link href="/contact" className="btn-primary bg-white text-primary hover:bg-cream">
-                        Contact Us Today
-                    </Link>
+            {/* Newsletter Section */}
+            <section className="relative py-20 bg-primary overflow-hidden">
+                <div className="absolute inset-0 opacity-10">
+                    <div className="absolute inset-0" style={{
+                        backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
+                        backgroundSize: '30px 30px'
+                    }}></div>
+                </div>
+
+                <div className="container mx-auto px-6 relative z-10">
+                    <div className="max-w-2xl mx-auto text-center text-white">
+                        <h2 className="text-4xl font-bold font-cormorant mb-4">
+                            Join Our Community
+                        </h2>
+                        <p className="text-white/90 text-lg mb-8">
+                            Subscribe to receive exclusive offers, candle care tips, and new collection launches
+                        </p>
+                        <div className="flex gap-4 max-w-md mx-auto">
+                            <input
+                                type="email"
+                                placeholder="Enter your email"
+                                className="flex-1 px-6 py-3 rounded-lg bg-white/20 backdrop-blur-md border border-white/30 text-white placeholder-white/60 focus:outline-none focus:border-white"
+                            />
+                            <button className="px-8 py-3 bg-white text-primary font-semibold rounded-lg hover:bg-white/90 transition-colors">
+                                Subscribe
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </section>
-        </>
+
+            <Footer />
+        </main>
     );
 }

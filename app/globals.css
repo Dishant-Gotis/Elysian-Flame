@@ -3,29 +3,31 @@
 @tailwind utilities;
 
 @layer base {
-  body {
-    @apply text-charcoal bg-white;
-  }
-  
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-serif;
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 17%;
+    --primary: 107 44% 54%;
+    --primary-foreground: 0 0% 100%;
+    --muted: 33 20% 95%;
+    --muted-foreground: 42 16% 42%;
+    --accent: 64 77% 48%;
+    --accent-foreground: 0 0% 17%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 107 44% 54%;
   }
 }
 
-@layer components {
-  .btn-primary {
-    @apply bg-primary text-white px-8 py-3 rounded-btn font-semibold transition-all hover:shadow-botanical-lg hover:-translate-y-0.5;
+@layer utilities {
+  .shadow-glass {
+    box-shadow: 0 8px 32px 0 rgba(108, 166, 81, 0.1);
   }
   
-  .btn-secondary {
-    @apply border-2 border-primary text-primary px-8 py-3 rounded-btn font-semibold transition-all hover:bg-primary hover:text-white;
+  .shadow-glass-lg {
+    box-shadow: 0 12px 48px 0 rgba(108, 166, 81, 0.15);
   }
   
-  .card {
-    @apply bg-white rounded-card shadow-botanical transition-all hover:shadow-botanical-lg hover:-translate-y-1;
-  }
-  
-  .section-padding {
-    @apply py-20 px-4 md:px-8 lg:px-16;
+  .touch-manipulation {
+    touch-action: manipulation;
   }
 }

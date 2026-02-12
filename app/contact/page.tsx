@@ -1,229 +1,257 @@
 'use client';
 
+import { Navbar } from '@/components/Navbar';
+import { Footer } from '@/components/Footer';
+import { Mail, Phone, Clock, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
+import { Button } from '@/components/ui/button';
 
-export default function ContactPage() {
+export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    product: '',
+    subject: 'general',
     message: '',
   });
-  const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // For now, just show success message
-    // In production, you'd send this to an API endpoint
     console.log('Form submitted:', formData);
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 5000);
+    alert('Thank you! We\'ll respond within 24 hours.');
+    setFormData({ name: '', email: '', phone: '', subject: 'general', message: '' });
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
+  const faqs = [
+    {
+      question: 'What is your return policy?',
+      answer: 'We accept returns within 30 days of purchase. Products must be unused and in original packaging.'
+    },
+    {
+      question: 'How long does shipping take?',
+      answer: 'Standard shipping takes 5-7 business days. Express shipping is 2-3 business days.'
+    },
+    {
+      question: 'Do you offer wholesale pricing?',
+      answer: 'Yes! Please contact us using the form above with your business details for wholesale inquiries.'
+    },
+    {
+      question: 'Can I customize a gift set?',
+      answer: 'Absolutely! We offer custom gift sets for special occasions. Contact us to discuss your needs.'
+    },
+  ];
 
   return (
-    <>
-      {/* Header */}
-      <section className="section-padding bg-cream">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-5xl font-serif font-bold text-primary mb-6">
-            Get in Touch
-          </h1>
-          <p className="text-gray-600 text-xl">
-            We'd love to hear from you. Contact us to place an order or ask about custom scents!
-          </p>
+    <main>
+      <Navbar />
+
+      {/* Hero */}
+      <section className="py-20 bg-gradient-to-b from-cream-50 to-white">
+        <div className="container mx-auto px-6">
+          <div className="text-center max-w-2xl mx-auto">
+            <h1 className="text-5xl font-bold font-cormorant text-charcoal mb-6">
+              We're Here to Help
+            </h1>
+            <p className="text-xl text-gray-600">
+              Have questions? We'd love to hear from you.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Contact Form & Info */}
-      <section className="section-padding">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {/* Contact Information */}
-            <div className="lg:col-span-1">
-              <h2 className="text-2xl font-serif font-bold text-primary mb-6">
-                Contact Information
-              </h2>
-
-              <div className="space-y-6">
-                <div>
-                  <h3 className="font-semibold text-lg mb-2">Email</h3>
-                  <a
-                    href="mailto:hello@elysianflame.com"
-                    className="text-accent-olive hover:text-primary transition-colors"
-                  >
-                    hello@elysianflame.com
-                  </a>
-                </div>
-
-                <div>
-                  <h3 className="font-semibold text-lg mb-2">Phone</h3>
-                  <a
-                    href="tel:+15551234567"
-                    className="text-accent-olive hover:text-primary transition-colors"
-                  >
-                    (555) 123-4567
-                  </a>
-                </div>
-
-                <div>
-                  <h3 className="font-semibold text-lg mb-2">Hours</h3>
-                  <p className="text-gray-600">Monday - Friday</p>
-                  <p className="text-gray-600">9:00 AM - 5:00 PM EST</p>
-                </div>
-
-                <div>
-                  <h3 className="font-semibold text-lg mb-2">Follow Us</h3>
-                  <div className="flex space-x-4">
-                    <a
-                      href="https://instagram.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-accent-olive hover:text-primary transition-colors"
-                    >
-                      Instagram
-                    </a>
-                    <a
-                      href="https://facebook.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-accent-olive hover:text-primary transition-colors"
-                    >
-                      Facebook
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              {/* How to Order */}
-              <div className="mt-8 p-6 bg-cream rounded-card">
-                <h3 className="font-serif font-bold text-xl mb-3">How to Order</h3>
-                <ol className="list-decimal list-inside space-y-2 text-gray-600">
-                  <li>Fill out the contact form or call/email us directly</li>
-                  <li>Let us know which scents you're interested in</li>
-                  <li>We'll confirm availability and provide pricing</li>
-                  <li>Arrange payment and delivery details</li>
-                  <li>Enjoy your handmade candles!</li>
-                </ol>
-              </div>
-            </div>
-
-            {/* Form */}
+      {/* Contact Form + Info */}
+      <section className="py-12 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="grid lg:grid-cols-3 gap-12">
+            {/* Contact Form */}
             <div className="lg:col-span-2">
-              <div className="card p-8">
-                <h2 className="text-2xl font-serif font-bold text-primary mb-6">
-                  Send Us a Message
+              <div className="p-8 rounded-2xl backdrop-blur-lg bg-white/60 border border-white/80 shadow-glass">
+                <h2 className="text-2xl font-bold font-cormorant text-charcoal mb-6">
+                  Send us a message
                 </h2>
-
-                {submitted && (
-                  <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-btn text-green-700">
-                    Thank you! We've received your message and will get back to you soon.
-                  </div>
-                )}
-
+                
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-semibold mb-2">
-                      Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      required
-                      value={formData.name}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-btn focus:outline-none focus:ring-2 focus:ring-primary"
-                    />
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-medium text-charcoal mb-2">
+                        Name *
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all backdrop-blur-sm bg-white/50"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-charcoal mb-2">
+                        Email *
+                      </label>
+                      <input
+                        type="email"
+                        required
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all backdrop-blur-sm bg-white/50"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-medium text-charcoal mb-2">
+                        Phone *
+                      </label>
+                      <input
+                        type="tel"
+                        required
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all backdrop-blur-sm bg-white/50"
+                        placeholder="+91 77689 81403"
+                        pattern="[+]?[0-9\s-]+"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-charcoal mb-2">
+                        Subject *
+                      </label>
+                      <select
+                        required
+                        value={formData.subject}
+                        onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all backdrop-blur-sm bg-white/50"
+                      >
+                        <option value="general">General Inquiry</option>
+                        <option value="order">Order Issue</option>
+                        <option value="wholesale">Wholesale</option>
+                        <option value="custom">Custom Order</option>
+                        <option value="other">Other</option>
+                      </select>
+                    </div>
                   </div>
 
                   <div>
-                    <label htmlFor="email" className="block text-sm font-semibold mb-2">
-                      Email *
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      required
-                      value={formData.email}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-btn focus:outline-none focus:ring-2 focus:ring-primary"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-semibold mb-2">
-                      Phone (Optional)
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-btn focus:outline-none focus:ring-2 focus:ring-primary"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="product" className="block text-sm font-semibold mb-2">
-                      Interested In
-                    </label>
-                    <select
-                      id="product"
-                      name="product"
-                      value={formData.product}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-btn focus:outline-none focus:ring-2 focus:ring-primary"
-                    >
-                      <option value="">Select a scent (optional)</option>
-                      <option value="orange">Orange</option>
-                      <option value="rose">Rose</option>
-                      <option value="lavender">Lavender</option>
-                      <option value="cinnamon">Cinnamon</option>
-                      <option value="ylang-ylang">Ylang Ylang</option>
-                      <option value="blueberry">Blueberry</option>
-                      <option value="strawberry">Strawberry</option>
-                      <option value="eucalyptus">Eucalyptus</option>
-                      <option value="ocean">Ocean</option>
-                      <option value="geranium">Geranium</option>
-                      <option value="custom">Custom Blend</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-semibold mb-2">
+                    <label className="block text-sm font-medium text-charcoal mb-2">
                       Message *
                     </label>
                     <textarea
-                      id="message"
-                      name="message"
                       required
                       rows={6}
                       value={formData.message}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-btn focus:outline-none focus:ring-2 focus:ring-primary resize-none"
-                      placeholder="Tell us about your order or inquiry..."
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all backdrop-blur-sm bg-white/50 resize-none"
+                      minLength={20}
+                      maxLength={1000}
                     />
+                    <p className="text-sm text-gray-500 mt-1">
+                      {formData.message.length}/1000 characters
+                    </p>
                   </div>
 
-                  <button type="submit" className="btn-primary w-full">
+                  <Button type="submit" size="lg" className="w-full md:w-auto">
                     Send Message
-                  </button>
+                  </Button>
                 </form>
+              </div>
+            </div>
+
+            {/* Contact Info */}
+            <div className="space-y-6">
+              <div className="p-6 rounded-2xl backdrop-blur-lg bg-white/60 border border-white/80 shadow-glass">
+                <div className="flex items-start space-x-4">
+                  <div className="p-3 rounded-full bg-primary/10">
+                    <Mail className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-charcoal mb-1">Email</h3>
+                    <a href="mailto:elysianflame03@gmail.com" className="text-gray-600 hover:text-primary transition-colors">
+                      elysianflame03@gmail.com
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-6 rounded-2xl backdrop-blur-lg bg-white/60 border border-white/80 shadow-glass">
+                <div className="flex items-start space-x-4">
+                  <div className="p-3 rounded-full bg-accent/10">
+                    <Phone className="w-6 h-6 text-accent" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-charcoal mb-1">Phone</h3>
+                    <a href="tel:+917768981403" className="text-gray-600 hover:text-primary transition-colors">
+                      +91 77689 81403
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-6 rounded-2xl backdrop-blur-lg bg-white/60 border border-white/80 shadow-glass">
+                <div className="flex items-start space-x-4">
+                  <div className="p-3 rounded-full bg-olive/10">
+                    <Clock className="w-6 h-6 text-olive" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-charcoal mb-1">Hours</h3>
+                    <p className="text-gray-600">Monday-Friday</p>
+                    <p className="text-gray-600">9:00 AM - 5:00 PM EST</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-6 rounded-2xl bg-primary/5 border border-primary/20">
+                <p className="text-sm text-gray-600">
+                  <span className="font-semibold text-primary">Response Time:</span> We typically respond within 24 hours during business days.
+                </p>
               </div>
             </div>
           </div>
         </div>
       </section>
-    </>
+
+      {/* FAQ Section */}
+      <section className="py-12 bg-cream-50">
+        <div className="container mx-auto px-6">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-3xl font-bold font-cormorant text-charcoal mb-8 text-center">
+              Frequently Asked Questions
+            </h2>
+            
+            <div className="space-y-4">
+              {faqs.map((faq, index) => (
+                <div
+                  key={index}
+                  className="p-6 rounded-2xl backdrop-blur-lg bg-white/60 border border-white/80 shadow-glass overflow-hidden"
+                >
+                  <button
+                    onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                    className="w-full flex items-center justify-between text-left"
+                  >
+                    <h3 className="font-semibold text-charcoal">{faq.question}</h3>
+                    <ChevronDown
+                      className={`w-5 h-5 text-primary transition-transform duration-200 ${
+                        openFaq === index ? 'rotate-180' : ''
+                      }`}
+                    />
+                  </button>
+                  <div
+                    className={`overflow-hidden transition-all duration-300 ${
+                      openFaq === index ? 'max-h-40 mt-4' : 'max-h-0'
+                    }`}
+                  >
+                    <p className="text-gray-600">{faq.answer}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </main>
   );
 }

@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: ["class"],
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -9,32 +10,46 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: {
-          green: '#6CA651',
-          DEFAULT: '#6CA651',
+        primary: '#6CA651',
+        accent: '#BBCB2E',
+        olive: '#839705',
+        sage: '#6B7445',
+        charcoal: '#2B2B2B',
+        cream: {
+          50: '#FAF9F6',
+          100: '#F5F3ED',
         },
-        accent: {
-          lime: '#BBCB2E',
-          olive: '#839705',
-          sage: '#6B7445',
-        },
-        cream: '#FAF8F5',
-        charcoal: '#2C2C2C',
+        background: '#FFFFFF',
+        foreground: '#2B2B2B',
+        card: '#FFFFFF',
+        'card-foreground': '#2B2B2B',
+        popover: '#FFFFFF',
+        'popover-foreground': '#2B2B2B',
+        muted: '#F5F3ED',
+        'muted-foreground': '#6B7445',
+        border: '#E5E5E5',
+        input: '#E5E5E5',
+        ring: '#6CA651',
       },
       fontFamily: {
-        serif: ['var(--font-cormorant)', 'Cormorant Garamond', 'serif'],
-        sans: ['var(--font-raleway)', 'Raleway', 'sans-serif'],
-      },
-      boxShadow: {
-        'botanical': '0 4px 12px rgba(108, 166, 81, 0.1)',
-        'botanical-lg': '0 8px 24px rgba(108, 166, 81, 0.15)',
+        cormorant: ['var(--font-cormorant)', 'serif'],
+        lora: ['var(--font-lora)', 'serif'],
       },
       borderRadius: {
-        'card': '12px',
-        'btn': '8px',
+        lg: '12px',
+        md: '8px',
+        sm: '4px',
+      },
+      boxShadow: {
+        'glass': '0 8px 32px 0 rgba(108, 166, 81, 0.1)',
+        'glass-lg': '0 12px 48px 0 rgba(108, 166, 81, 0.15)',
+      },
+      backdropBlur: {
+        xs: '2px',
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
 };
+
 export default config;

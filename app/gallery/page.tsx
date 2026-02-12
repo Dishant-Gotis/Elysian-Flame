@@ -1,63 +1,123 @@
-import ProductCard from '@/components/ProductCard';
+'use client';
 
-const allProducts = [
-    { id: '1', name: 'Orange', tagline: 'Energizing & Citrus', image: '/products/orange.jpeg' },
-    { id: '2', name: 'Rose', tagline: 'Romantic & Floral', image: '/products/rose.jpeg' },
-    { id: '3', name: 'Lavender', tagline: 'Calming & Floral', image: '/products/lavander.jpeg' },
-    { id: '4', name: 'Cinnamon', tagline: 'Warm & Spicy', image: '/products/cinnamon.jpeg' },
-    { id: '5', name: 'Ylang Ylang', tagline: 'Exotic & Floral', image: '/products/ylang-ylang-candle.jpeg' },
-    { id: '6', name: 'Blueberry', tagline: 'Sweet & Fruity', image: '/products/blueberry.jpeg' },
-    { id: '7', name: 'Strawberry', tagline: 'Fresh & Fruity', image: '/products/strawberry.jpeg' },
-    { id: '8', name: 'Eucalyptus', tagline: 'Refreshing & Herbal', image: '/products/eucalyptus.jpeg' },
-    { id: '9', name: 'Ocean', tagline: 'Clean & Fresh', image: '/products/ocean.jpeg' },
-    { id: '10', name: 'Geranium', tagline: 'Delicate & Floral', image: '/products/Geranium.jpeg' },
-];
+import { useEffect } from 'react';
+import { Navbar } from '@/components/Navbar';
+import { Footer } from '@/components/Footer';
+import { ZoomParallax } from '@/components/ui/zoom-parallax';
+import Lenis from '@studio-freight/lenis';
 
-export const metadata = {
-    title: 'Candle Gallery | Elysian Flame',
-    description: 'Browse our full collection of hand-poured soy candles with natural essential oils.',
-};
+export default function Gallery() {
+  // Smooth scroll
+  useEffect(() => {
+    const lenis = new Lenis();
 
-export default function GalleryPage() {
-    return (
-        <>
-            {/* Header Section */}
-            <section className="section-padding bg-cream">
-                <div className="max-w-7xl mx-auto text-center">
-                    <h1 className="text-5xl font-serif font-bold text-primary mb-6">
-                        Our Candle Collection
-                    </h1>
-                    <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-                        Explore our complete range of handcrafted soy candles, each infused with premium essential oils and natural botanicals.
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+
+  // Parallax images from Album folder
+  const parallaxImages = [
+    { src: '/images/Album/rose.jpeg', alt: 'Rose Garden Candle' },
+    { src: '/images/Album/blueberry.jpeg', alt: 'Blueberry Fields Candle' },
+    { src: '/images/Album/orange.jpeg', alt: 'Orange Zest Candle' },
+    { src: '/images/Album/strawberry.jpeg', alt: 'Strawberry Dreams Candle' },
+    { src: '/images/Album/ocean.jpeg', alt: 'Ocean Mist Candle' },
+    { src: '/images/Album/rose-2.jpeg', alt: 'Wild Rose Candle' },
+    { src: '/images/Album/bowl.jpeg', alt: 'Wax Bowl - Behind the Scenes' },
+  ];
+
+  // All gallery images for the grid at the end
+  const galleryImages = [
+    { src: '/images/Album/rose.jpeg', title: 'Rose Garden', category: 'Floral' },
+    { src: '/images/Album/orange.jpeg', title: 'Orange Zest', category: 'Citrus' },
+    { src: '/images/Album/blueberry.jpeg', title: 'Blueberry Fields', category: 'Fruity' },
+    { src: '/images/Album/strawberry.jpeg', title: 'Strawberry Dreams', category: 'Fruity' },
+    { src: '/images/Album/ocean.jpeg', title: 'Ocean Mist', category: 'Fresh' },
+    { src: '/images/Album/rose-2.jpeg', title: 'Wild Rose', category: 'Floral' },
+    { src: '/images/Album/bowl.jpeg', title: 'Wax Bowl', category: 'Behind the Scenes' },
+    { src: '/images/Album/clove.jpeg', title: 'Clove Spice', category: 'Warm' },
+    { src: '/images/Album/heart.jpeg', title: 'Heart Candle', category: 'Special Edition' },
+  ];
+
+  return (
+    <main>
+      <Navbar />
+
+      {/* Hero Section */}
+      <section className="relative py-20 bg-gradient-to-b from-cream-50 to-white">
+        <div className="container mx-auto px-6">
+          <div className="text-center max-w-2xl mx-auto">
+            <h1 className="text-5xl font-bold font-cormorant text-charcoal mb-6">
+              Gallery
+            </h1>
+            <p className="text-xl text-gray-600">
+              Explore our handcrafted collection of botanical candles
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Scroll Down Indicator */}
+      <div className="relative flex h-[30vh] items-center justify-center bg-white">
+        <div className="text-center">
+          <p className="text-lg text-gray-500 mb-4">Scroll Down</p>
+          <div className="animate-bounce">
+            <svg className="w-6 h-6 mx-auto text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      {/* Zoom Parallax Section */}
+      <ZoomParallax images={parallaxImages} />
+
+      {/* Gallery Grid */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold font-cormorant text-charcoal mb-4">
+              Our Collection
+            </h2>
+            <p className="text-gray-600 text-lg">
+              Handcrafted with love and natural ingredients
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {galleryImages.map((image, index) => (
+              <div
+                key={index}
+                className="group relative overflow-hidden rounded-2xl shadow-glass hover:shadow-glass-lg transition-all duration-300 aspect-square"
+              >
+                <img
+                  src={image.src}
+                  alt={image.title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                    <p className="text-xs uppercase tracking-wider mb-1 text-accent">
+                      {image.category}
                     </p>
+                    <h3 className="text-xl font-bold font-cormorant">{image.title}</h3>
+                  </div>
                 </div>
-            </section>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-            {/* Products Grid */}
-            <section className="section-padding">
-                <div className="max-w-7xl mx-auto">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-                        {allProducts.map((product) => (
-                            <ProductCard key={product.id} product={product} />
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* CTA Section */}
-            <section className="section-padding bg-primary text-white">
-                <div className="max-w-3xl mx-auto text-center">
-                    <h2 className="text-3xl font-serif font-bold mb-4">
-                        Found Your Perfect Scent?
-                    </h2>
-                    <p className="text-lg mb-8 text-cream">
-                        Contact us to place your order or inquire about custom blends
-                    </p>
-                    <a href="/contact" className="btn-primary bg-white text-primary hover:bg-cream">
-                        Get in Touch
-                    </a>
-                </div>
-            </section>
-        </>
-    );
+      <Footer />
+    </main>
+  );
 }

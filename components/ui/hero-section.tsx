@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { ImageSwiper } from '@/components/ui/image-swiper';
 
 interface CandleHeroProps {
   title: React.ReactNode;
@@ -14,8 +13,8 @@ interface CandleHeroProps {
   primaryButtonLink: string;
   secondaryButtonText: string;
   secondaryButtonLink: string;
-  candleImage1: string;
-  candleImage2: string;
+  candleImage1?: string;
+  candleImage2?: string;
   className?: string;
 }
 
@@ -24,38 +23,22 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2,
+      staggerChildren: 0.15,
+      delayChildren: 0.2,
     },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.5,
-    },
-  },
-};
-
-const candlesVariants = {
-  hidden: { opacity: 0, x: 50 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      duration: 0.8,
+      duration: 0.6,
       ease: 'easeOut',
-      staggerChildren: 0.3,
     },
   },
-};
-
-const candleItemVariants = {
-  hidden: { opacity: 0, x: 50 },
-  visible: { opacity: 1, x: 0 },
 };
 
 export const CandleHero = ({
@@ -65,142 +48,125 @@ export const CandleHero = ({
   primaryButtonLink,
   secondaryButtonText,
   secondaryButtonLink,
-  candleImage1,
-  candleImage2,
   className,
 }: CandleHeroProps) => {
-  const gridBackgroundStyle = {
-    backgroundImage:
-      'linear-gradient(rgba(108, 166, 81, 0.1) 1px, transparent 1px), linear-gradient(to right, rgba(108, 166, 81, 0.1) 1px, transparent 1px)',
-    backgroundSize: '3rem 3rem',
-  };
-
   return (
     <section
       className={cn(
-        'relative w-full overflow-hidden bg-gradient-to-b from-cream-50 via-white to-cream-50',
+        'relative w-full overflow-hidden min-h-[90vh] md:min-h-screen flex items-center justify-center',
         className
       )}
+      style={{
+        backgroundImage: 'url(/images/banner-1.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed',
+      }}
     >
-      {/* Grid Background */}
-      <div
-        className="absolute inset-0 opacity-40"
-        style={gridBackgroundStyle}
+      {/* Multi-layer Overlay for Premium Effect */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30"></div>
+      
+      {/* Decorative Elements */}
+      <motion.div
+        className="absolute top-20 left-10 w-20 h-20 rounded-full border-2 border-primary/30"
+        animate={{ 
+          y: [0, -30, 0],
+          opacity: [0.3, 0.6, 0.3]
+        }}
+        transition={{ duration: 6, repeat: Infinity }}
+      />
+      <motion.div
+        className="absolute bottom-32 right-20 w-32 h-32 rounded-full bg-primary/10 blur-3xl"
+        animate={{ 
+          scale: [1, 1.2, 1],
+          opacity: [0.2, 0.4, 0.2]
+        }}
+        transition={{ duration: 8, repeat: Infinity }}
       />
 
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-transparent to-white/80" />
-
+      {/* Content Container */}
       <motion.div
-        className="relative container mx-auto flex min-h-[80vh] items-center justify-between px-6 py-20 lg:flex-row flex-col gap-12"
+        className="relative z-10 container mx-auto px-4 sm:px-6 py-12 md:py-0 w-full"
         initial="hidden"
         animate="visible"
         variants={containerVariants}
       >
-        {/* Left: Text Content */}
-        <div className="flex flex-col items-center text-center lg:items-start lg:text-left lg:w-1/2 z-10 px-4 sm:px-0">
+        <div className="max-w-2xl mx-auto md:mx-0 text-center md:text-left flex flex-col items-center md:items-start">
+          
+          {/* Badge */}
           <motion.div
-            className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-primary/10 text-primary mb-4 sm:mb-6 backdrop-blur-sm border border-primary/20"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/15 backdrop-blur-lg border border-white/20 text-white mb-6 md:mb-8"
             variants={itemVariants}
           >
-            <Sparkles className="w-3 h-3 sm:w-4 sm:h-4" />
-            <span className="text-xs sm:text-sm font-medium">100% Natural Soy</span>
+            <Sparkles className="w-4 h-4" />
+            <span className="text-sm font-medium">100% Natural Soy • Hand-Poured</span>
           </motion.div>
 
+          {/* Main Headline */}
           <motion.h1
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-charcoal font-cormorant leading-tight"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-cormorant text-white leading-tight tracking-tight drop-shadow-lg"
             variants={itemVariants}
           >
             {title}
           </motion.h1>
 
+          {/* Subtitle */}
           <motion.p
-            className="mt-4 sm:mt-6 max-w-xl text-base sm:text-lg text-gray-600 px-2 sm:px-0"
+            className="mt-6 md:mt-8 text-lg sm:text-xl text-white/90 max-w-xl drop-shadow-md"
             variants={itemVariants}
           >
             {description}
           </motion.p>
 
-          <motion.div variants={itemVariants} className="mt-6 sm:mt-8 flex gap-3 sm:gap-4 flex-wrap justify-center lg:justify-start w-full px-2 sm:px-0">
-            <a href={primaryButtonLink} className="flex-1 sm:flex-none min-w-[140px]">
-              <Button
-                size="lg"
-                className="w-full h-11 sm:h-12 px-6 sm:px-8 text-sm sm:text-base shadow-glass-lg hover:scale-105 transition-transform active:scale-95"
-              >
+          {/* CTA Buttons */}
+          <motion.div 
+            className="mt-8 md:mt-12 flex gap-4 flex-col sm:flex-row items-center md:items-start w-full sm:w-auto"
+            variants={itemVariants}
+          >
+            <a href={primaryButtonLink} className="w-full sm:w-auto">
+              <button className="w-full sm:w-auto px-8 py-3.5 bg-primary text-white font-semibold rounded-xl hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 flex items-center justify-center gap-2 group">
                 {primaryButtonText}
-                <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
-              </Button>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </button>
             </a>
-            <a href={secondaryButtonLink} className="flex-1 sm:flex-none min-w-[140px]">
-              <Button
-                size="lg"
-                variant="outline"
-                className="w-full h-11 sm:h-12 px-6 sm:px-8 text-sm sm:text-base shadow-glass hover:scale-105 transition-transform active:scale-95"
-              >
+            <a href={secondaryButtonLink} className="w-full sm:w-auto">
+              <button className="w-full sm:w-auto px-8 py-3.5 bg-white/20 text-white font-semibold rounded-xl border border-white/40 hover:bg-white/30 transition-all duration-300 backdrop-blur-sm hover:scale-105">
                 {secondaryButtonText}
-              </Button>
+              </button>
             </a>
           </motion.div>
 
-          {/* Trust Badges */}
+          {/* Trust Indicators */}
           <motion.div
-            className="mt-8 sm:mt-10 flex gap-4 sm:gap-6 text-xs sm:text-sm text-gray-500 flex-wrap justify-center lg:justify-start"
+            className="mt-12 md:mt-16 flex flex-wrap gap-6 text-sm text-white/80 justify-center md:justify-start"
             variants={itemVariants}
           >
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-primary"></div>
-              <span>Hand-Poured</span>
+              <span>Premium Essential Oils</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-accent"></div>
-              <span>Essential Oils</span>
+              <span>100% Eco-Friendly</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-olive"></div>
-              <span>Eco-Friendly</span>
+              <div className="w-2 h-2 rounded-full bg-primary/60"></div>
+              <span>Small-Batch Crafted</span>
             </div>
           </motion.div>
         </div>
+      </motion.div>
 
-        {/* Right: Interactive Image Swiper */}
-        <motion.div
-          className="relative lg:w-1/2 h-full w-full flex items-center justify-center min-h-[300px] sm:min-h-[400px]"
-          variants={candlesVariants}
-        >
-          <ImageSwiper
-            images="/images/Album/rose.jpeg,/images/Album/strawberry.jpeg,/images/Album/blueberry.jpeg,/images/Album/ocean.jpeg,/images/Album/orange.jpeg,/images/Album/clove.jpeg,/images/Album/heart.jpeg,/images/Album/bowl.jpeg,/images/Album/rose-2.jpeg"
-            cardWidth={280}
-            cardHeight={400}
-            className="z-10"
-          />
-
-          {/* Floating Botanical Elements */}
-          <motion.div
-            className="absolute top-10 right-10 w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-primary/20 backdrop-blur-md border border-primary/30"
-            animate={{
-              y: [0, -20, 0],
-              rotate: [0, 10, 0],
-            }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          />
-          <motion.div
-            className="absolute bottom-10 left-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-accent/20 backdrop-blur-md border border-accent/30"
-            animate={{
-              y: [0, 20, 0],
-              rotate: [0, -10, 0],
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 0.5
-            }}
-          />
-        </motion.div>
+      {/* Scroll Indicator */}
+      <motion.div
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 2, repeat: Infinity }}
+      >
+        <svg className="w-6 h-6 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
       </motion.div>
     </section>
   );

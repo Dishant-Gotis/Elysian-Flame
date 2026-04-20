@@ -36,6 +36,7 @@ export default function Gallery() {
 
   // All gallery images for the grid at the end
   const galleryImages = [
+    // Album Collection
     { src: '/images/Album/rose.jpeg', title: 'Rose Garden', category: 'Floral' },
     { src: '/images/Album/orange.jpeg', title: 'Orange Zest', category: 'Citrus' },
     { src: '/images/Album/blueberry.jpeg', title: 'Blueberry Fields', category: 'Fruity' },
@@ -45,6 +46,20 @@ export default function Gallery() {
     { src: '/images/Album/bowl.jpeg', title: 'Wax Bowl', category: 'Behind the Scenes' },
     { src: '/images/Album/clove.jpeg', title: 'Clove Spice', category: 'Warm' },
     { src: '/images/Album/heart.jpeg', title: 'Heart Candle', category: 'Special Edition' },
+    // Individual Scents
+    { src: '/images/cinnamon.jpeg', title: 'Cinnamon Warmth', category: 'Warm' },
+    { src: '/images/eucalyptus.jpeg', title: 'Eucalyptus Breeze', category: 'Fresh' },
+    { src: '/images/Geranium.jpeg', title: 'Geranium Grace', category: 'Floral' },
+    { src: '/images/lavander.jpeg', title: 'Lavender Dreams', category: 'Floral' },
+    { src: '/images/ylang-ylang-candle.jpeg', title: 'Ylang Ylang Luxury', category: 'Exotic' },
+    { src: '/images/sented-candles.jpeg', title: 'Signature Collection', category: 'Collections' },
+    { src: '/images/new-products.jpeg', title: 'Product Showcase', category: 'Collections' },
+    // New Launch 2026
+    { src: '/images/new-candles/aqua.jpeg', title: 'Aqua Serenity', category: 'New Launch' },
+    { src: '/images/new-candles/floww.jpeg', title: 'Floral Essence', category: 'New Launch' },
+    { src: '/images/new-candles/nargis.jpeg', title: 'Nargis Night', category: 'New Launch' },
+    { src: '/images/new-candles/orange-pla.jpeg', title: 'Citrus Bloom', category: 'New Launch' },
+    { src: '/images/new-candles/white-pla.jpeg', title: 'Pearl White', category: 'New Launch' },
   ];
 
   return (

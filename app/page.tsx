@@ -1,6 +1,9 @@
+'use client';
+
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { CandleHero } from '@/components/ui/hero-section';
+import { motion } from 'framer-motion';
 
 export default function Home() {
     return (
@@ -12,7 +15,7 @@ export default function Home() {
                 title={
                     <>
                         Hand-Poured Botanical <br />
-                        <span className="text-primary">Luxury</span>
+                        <span className="text-accent">Luxury</span>
                     </>
                 }
                 description="Discover our collection of 100% natural soy candles, infused with premium essential oils. Each candle is hand-poured with care to bring warmth and tranquility to your home."
@@ -20,8 +23,6 @@ export default function Home() {
                 primaryButtonLink="/gallery"
                 secondaryButtonText="Explore Gift Sets"
                 secondaryButtonLink="/gallery"
-                candleImage1="/images/Album/rose.jpeg"
-                candleImage2="/images/Album/strawberry.jpeg"
             />
 
             {/* Value Propositions Section */}
@@ -87,9 +88,9 @@ export default function Home() {
                             <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-8 text-white">
                                 <h3 className="text-2xl sm:text-3xl font-bold font-cormorant mb-2">Floral Collection</h3>
                                 <p className="text-white/80 mb-3 sm:mb-4 text-sm sm:text-base">12 products</p>
-                                <button className="px-4 sm:px-6 py-2 text-sm sm:text-base bg-white/20 backdrop-blur-md border border-white/40 rounded-full text-white hover:bg-white/30 transition-colors">
+                                <a href="/gallery" className="inline-block px-4 sm:px-6 py-2 text-sm sm:text-base bg-white/20 backdrop-blur-md border border-white/40 rounded-full text-white hover:bg-white/30 transition-colors">
                                     Shop Now
-                                </button>
+                                </a>
                             </div>
                         </div>
 
@@ -103,12 +104,89 @@ export default function Home() {
                             <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-8 text-white">
                                 <h3 className="text-2xl sm:text-3xl font-bold font-cormorant mb-2">Citrus Collection</h3>
                                 <p className="text-white/80 mb-3 sm:mb-4 text-sm sm:text-base">8 products</p>
-                                <button className="px-4 sm:px-6 py-2 text-sm sm:text-base bg-white/20 backdrop-blur-md border border-white/40 rounded-full text-white hover:bg-white/30 transition-colors">
+                                <a href="/gallery" className="inline-block px-4 sm:px-6 py-2 text-sm sm:text-base bg-white/20 backdrop-blur-md border border-white/40 rounded-full text-white hover:bg-white/30 transition-colors">
                                     Shop Now
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
+                </div>
+            </section>
+
+            {/* New Launch Section */}
+            <section className="relative py-16 sm:py-20 md:py-28 bg-gradient-to-b from-white via-cream-50 to-white overflow-hidden">
+                <div className="container mx-auto px-4 sm:px-6">
+                    <motion.div
+                        initial={{ opacity: 0, y: 40 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{ duration: 0.6, ease: 'easeOut' }}
+                        className="text-center mb-12 sm:mb-16"
+                    >
+                        <div className="inline-block mb-4">
+                            <span className="text-xs sm:text-sm uppercase tracking-widest text-primary font-semibold">
+                                ✨ Just Arrived
+                            </span>
+                        </div>
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-cormorant text-charcoal mb-4 sm:mb-6">
+                            New Launch 2026
+                        </h2>
+                        <p className="text-gray-600 text-base sm:text-lg max-w-2xl mx-auto px-2">
+                            Introducing our freshest scent collection—designed to elevate your space with unexpected botanical blends and timeless elegance.
+                        </p>
+                    </motion.div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6">
+                        {[
+                            { image: '/images/new-candles/aqua.jpeg', name: 'Aqua Serenity', desc: 'Fresh & Crisp' },
+                            { image: '/images/new-candles/floww.jpeg', name: 'Floral Essence', desc: 'Soft & Elegant' },
+                            { image: '/images/new-candles/nargis.jpeg', name: 'Nargis Night', desc: 'Warm & Complex' },
+                            { image: '/images/new-candles/orange-pla.jpeg', name: 'Citrus Bloom', desc: 'Vibrant & Uplifting' },
+                            { image: '/images/new-candles/white-pla.jpeg', name: 'Pearl White', desc: 'Pure & Luminous' },
+                        ].map((candle, index) => (
+                            <motion.div
+                                key={candle.name}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, amount: 0.2 }}
+                                transition={{ duration: 0.5, delay: index * 0.08, ease: 'easeOut' }}
+                                className="group"
+                            >
+                                <div className="relative h-64 sm:h-72 rounded-2xl overflow-hidden mb-4 shadow-glass hover:shadow-glass-lg transition-all duration-300">
+                                    <img
+                                        src={candle.image}
+                                        alt={candle.name}
+                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                                        <div className="w-full p-4">
+                                            <a href="/gallery" className="block w-full px-4 py-2.5 bg-white/90 text-charcoal font-semibold rounded-xl hover:bg-white transition-colors text-sm text-center">
+                                                Shop Now
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h4 className="text-lg font-bold font-cormorant text-charcoal mb-1 group-hover:text-primary transition-colors">
+                                    {candle.name}
+                                </h4>
+                                <p className="text-xs sm:text-sm text-gray-500 uppercase tracking-wider">
+                                    {candle.desc}
+                                </p>
+                            </motion.div>
+                        ))}
+                    </div>
+
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.3 }}
+                        transition={{ duration: 0.5, delay: 0.4, ease: 'easeOut' }}
+                        className="text-center mt-12 sm:mt-16"
+                    >
+                        <a href="/gallery" className="inline-flex px-8 py-3.5 bg-primary text-white font-semibold rounded-xl hover:bg-primary/90 transition-colors shadow-glass hover:shadow-glass-lg">
+                            Explore All New Arrivals
+                        </a>
+                    </motion.div>
                 </div>
             </section>
 

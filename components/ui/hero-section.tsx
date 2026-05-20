@@ -16,6 +16,7 @@ interface CandleHeroProps {
   candleImage1?: string;
   candleImage2?: string;
   className?: string;
+  aside?: React.ReactNode;
 }
 
 const containerVariants = {
@@ -49,18 +50,18 @@ export const CandleHero = ({
   secondaryButtonText,
   secondaryButtonLink,
   className,
+  aside,
 }: CandleHeroProps) => {
   return (
     <section
       className={cn(
-        'relative w-full overflow-hidden min-h-[90vh] md:min-h-screen flex items-center justify-center',
+        'relative w-full overflow-hidden min-h-[80vh] md:min-h-[90vh] flex items-center justify-center',
         className
       )}
       style={{
-        backgroundImage: 'url(/images/banner-1.png)',
+        backgroundImage: 'url(/images/banners/bg.jpg)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
       }}
     >
       {/* Multi-layer Overlay for Premium Effect */}
@@ -92,69 +93,78 @@ export const CandleHero = ({
         animate="visible"
         variants={containerVariants}
       >
-        <div className="max-w-2xl mx-auto md:mx-0 text-center md:text-left flex flex-col items-center md:items-start">
-          
-          {/* Badge */}
-          <motion.div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/15 backdrop-blur-lg border border-white/20 text-white mb-6 md:mb-8"
-            variants={itemVariants}
-          >
-            <Sparkles className="w-4 h-4" />
-            <span className="text-sm font-medium">100% Natural Soy • Hand-Poured</span>
-          </motion.div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-8">
+          <div className="lg:col-span-7">
+            <div className="max-w-3xl mx-auto lg:mx-0 text-center lg:text-left flex flex-col items-center lg:items-start">
 
-          {/* Main Headline */}
-          <motion.h1
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-cormorant text-white leading-tight tracking-tight drop-shadow-lg"
-            variants={itemVariants}
-          >
-            {title}
-          </motion.h1>
+              {/* Badge */}
+              <motion.div
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/15 backdrop-blur-lg border border-white/20 text-white mb-6 md:mb-8"
+                variants={itemVariants}
+              >
+                <Sparkles className="w-4 h-4" />
+                <span className="text-sm font-medium">100% Natural Soy • Hand-Poured</span>
+              </motion.div>
 
-          {/* Subtitle */}
-          <motion.p
-            className="mt-6 md:mt-8 text-lg sm:text-xl text-white/90 max-w-xl drop-shadow-md"
-            variants={itemVariants}
-          >
-            {description}
-          </motion.p>
+              {/* Main Headline */}
+              <motion.h1
+                className="text-4xl sm:text-5xl md:text-6xl font-bold font-cormorant text-white leading-tight tracking-tight drop-shadow-lg"
+                variants={itemVariants}
+              >
+                {title}
+              </motion.h1>
 
-          {/* CTA Buttons */}
-          <motion.div 
-            className="mt-8 md:mt-12 flex gap-4 flex-col sm:flex-row items-center md:items-start w-full sm:w-auto"
-            variants={itemVariants}
-          >
-            <a href={primaryButtonLink} className="w-full sm:w-auto">
-              <button className="w-full sm:w-auto px-8 py-3.5 bg-primary text-white font-semibold rounded-xl hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 flex items-center justify-center gap-2 group">
-                {primaryButtonText}
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
-            </a>
-            <a href={secondaryButtonLink} className="w-full sm:w-auto">
-              <button className="w-full sm:w-auto px-8 py-3.5 bg-white/20 text-white font-semibold rounded-xl border border-white/40 hover:bg-white/30 transition-all duration-300 backdrop-blur-sm hover:scale-105">
-                {secondaryButtonText}
-              </button>
-            </a>
-          </motion.div>
+              {/* Subtitle */}
+              <motion.p
+                className="mt-6 md:mt-8 text-lg sm:text-xl text-white/90 max-w-xl drop-shadow-md"
+                variants={itemVariants}
+              >
+                {description}
+              </motion.p>
 
-          {/* Trust Indicators */}
-          <motion.div
-            className="mt-12 md:mt-16 flex flex-wrap gap-6 text-sm text-white/80 justify-center md:justify-start"
-            variants={itemVariants}
-          >
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-primary"></div>
-              <span>Premium Essential Oils</span>
+              {/* CTA Buttons */}
+              <motion.div
+                className="mt-8 md:mt-12 flex gap-4 flex-col sm:flex-row items-center md:items-start w-full sm:w-auto"
+                variants={itemVariants}
+              >
+                <a href={primaryButtonLink} className="w-full sm:w-auto">
+                  <button className="w-full sm:w-auto px-8 py-3.5 bg-primary text-white font-semibold rounded-xl hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 flex items-center justify-center gap-2 group">
+                    {primaryButtonText}
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </button>
+                </a>
+                <a href={secondaryButtonLink} className="w-full sm:w-auto">
+                  <button className="w-full sm:w-auto px-8 py-3.5 bg-white/20 text-white font-semibold rounded-xl border border-white/40 hover:bg-white/30 transition-all duration-300 backdrop-blur-sm hover:scale-105">
+                    {secondaryButtonText}
+                  </button>
+                </a>
+              </motion.div>
+
+              {/* Trust Indicators */}
+              <motion.div
+                className="mt-12 md:mt-16 flex flex-wrap gap-6 text-sm text-white/80 justify-center md:justify-start"
+                variants={itemVariants}
+              >
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-primary"></div>
+                  <span>Premium Essential Oils</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-accent"></div>
+                  <span>100% Eco-Friendly</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-primary/60"></div>
+                  <span>Small-Batch Crafted</span>
+                </div>
+              </motion.div>
             </div>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-accent"></div>
-              <span>100% Eco-Friendly</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-primary/60"></div>
-              <span>Small-Batch Crafted</span>
-            </div>
-          </motion.div>
+          </div>
+
+          {/* Right aside column (desktop) */}
+          <div className="hidden lg:flex lg:col-span-5 items-center justify-center">
+            <div className="w-80 lg:w-96 transform -translate-x-6 lg:-translate-x-12">{aside}</div>
+          </div>
         </div>
       </motion.div>
 

@@ -3,6 +3,7 @@
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { CandleHero } from '@/components/ui/hero-section';
+import { StackedCardsInteraction } from '@/components/ui/stacked-cards-interaction';
 import { motion } from 'framer-motion';
 
 export default function Home() {
@@ -23,6 +24,29 @@ export default function Home() {
                 primaryButtonLink="/gallery"
                 secondaryButtonText="Explore Gift Sets"
                 secondaryButtonLink="/gallery"
+                        aside={
+                            <div className="hidden lg:block">
+                                <StackedCardsInteraction
+                                    cards={[
+                                        {
+                                            image: '/images/Album/rose.jpeg',
+                                            title: 'Rose Garden',
+                                            description: 'Hand-poured Botanical Candle',
+                                        },
+                                        {
+                                            image: '/images/Album/blueberry.jpeg',
+                                            title: 'Blueberry Fields',
+                                            description: 'Hand-poured Botanical Candle',
+                                        },
+                                        {
+                                            image: '/images/Album/orange.jpeg',
+                                            title: 'Orange Zest',
+                                            description: 'Hand-poured Botanical Candle',
+                                        },
+                                    ]}
+                                />
+                            </div>
+                        }
             />
 
             {/* Value Propositions Section */}
